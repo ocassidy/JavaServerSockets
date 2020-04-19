@@ -46,7 +46,7 @@ public class SequenceMultiClient {
 
                     // finish the input and close connection if "finish" is entered
                     if (userInput.equalsIgnoreCase("finish")) {
-                        System.out.println("The longest sequence: " + inputStream.readLine().toLowerCase() + ".");
+                        System.out.println(inputStream.readLine() + ".");
                         System.out.println("Sequence printed closing connection.");
                         //break out of if and while
                         break;

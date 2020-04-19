@@ -30,7 +30,7 @@ public class LongestSequence {
         return list;
     }
 
-    public Set<Integer> longestConsecutive(List<Integer> numList, PrintWriter output) {
+    public Set<Integer> longestConsecutive(List<Integer> numList) {
         int startPos = 0;
         int endPos = 0;
         int temp = 0;

@@ -36,13 +36,12 @@ public class SequenceClient {
                 //enter while loop
                 // exit close connection if sentinel value "exit" is used
                 while (!(userInput = userInputStream.readLine().toLowerCase()).equals(sentinelExit)) {
-                    //print initial input
                     outputStream.println(userInput);
                     outputStream.flush();
 
                     // finish the input and close connection if "finish" is entered
                     if (userInput.equalsIgnoreCase("finish")) {
-                        System.out.println("The longest sequence: " + inputStream.readLine().toLowerCase() + ".");
+                        System.out.println(inputStream.readLine() + ".");
                         System.out.println("Sequence printed closing connection.");
                         //break out of if and while
                         break;

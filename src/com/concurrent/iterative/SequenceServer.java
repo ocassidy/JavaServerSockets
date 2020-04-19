@@ -6,6 +6,8 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
 
 public class SequenceServer {
     public static void main(String[] args) {
@@ -22,11 +24,10 @@ public class SequenceServer {
             Socket socket = serverSocket.accept();
             BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+            System.out.println("Received new connection.");
 
             //while connection is active
             while (true) {
-                System.out.println("Received new connection.");
-
                 //instantiate list with user values added on every input
                 List<Integer> list = longestSequence.getInput(input, output);
 
@@ -37,7 +38,8 @@ public class SequenceServer {
                     break;
                 } else {
                     //else continue and print the longestConsecutive
-                    output.println(longestSequence.longestConsecutive(list, output));
+                    Set<Integer> sequence = longestSequence.longestConsecutive(list);
+                    output.println("Longest Sequence: " + sequence + " with Length: " + sequence.size());
                     output.flush();
                 }
             }
@@ -55,5 +57,6 @@ public class SequenceServer {
         is.close();
         socket.close();
         serverSocket.close();
+        System.out.println("Server closing.");
     }
 }

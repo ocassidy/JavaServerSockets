@@ -3,9 +3,9 @@ package com.concurrent.multi;
 import com.concurrent.shared.LongestSequence;
 
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
+import java.util.Set;
 
 public class SequenceMultiServerThread extends Thread {
 
@@ -32,12 +32,13 @@ public class SequenceMultiServerThread extends Thread {
 
                 //if list is empty return text and close connection
                 if (list.isEmpty()) {
-                    output.println("List from " + Thread.currentThread().getName() + " was empty, closing connection.");
+                    output.println("List from " + Thread.currentThread().getName() + " was empty, closing connection");
                     output.flush();
                     break;
                 } else {
                     //else continue and print the longestConsecutive
-                    output.println(longestSequence.longestConsecutive(list, output));
+                    Set<Integer> sequence = longestSequence.longestConsecutive(list);
+                    output.println("Longest Sequence: " + sequence + " with Length: " + sequence.size());
                     output.flush();
                 }
             }
